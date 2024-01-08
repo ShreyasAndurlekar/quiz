@@ -1,0 +1,42 @@
+{
+    "response_code": 0,
+    "results": [
+        {
+            "category": "General Knowledge",
+            "type": "boolean",
+            "difficulty": "medium",
+            "question": "The average woman is 5 inches / 13 centimeters shorter than the average man.",
+            "correct_answer": "True",
+            "incorrect_answers": [
+                "False"
+            ]
+        }
+    ]
+}
+
+{
+    "response_code": 0,
+    "results": [
+        {
+            "category": "General Knowledge",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Scotch whisky and Drambuie make up which cocktail?",
+            "correct_answer": "Rusty Nail",
+            "incorrect_answers": [
+                "Screwdriver",
+                "Sex on the Beach",
+                "Manhattan"
+            ]
+        }
+    ]
+}
+
+select* from leaderboard;
+
++----+---------+----------------------+-------+----------+
+| id | country | name                 | score | accuracy |
++----+---------+----------------------+-------+----------+
+|  1 | India   | Shardul Dandharphale |   168 |       98 |
+|  2 | India   | Om Bhasme            |   160 |       50 |
++----+---------+----------------------+-------+----------+

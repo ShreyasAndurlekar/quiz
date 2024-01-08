@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>BrainIt</title>
+
+    <link rel = "stylesheet" href = "styles.css">
+    
+</head>
+<body>
+
+    <div class="topnav">
+        <div class="topnav-left">
+            <a href="/" class = "custom-style"><div class="topnav-child">Home</div></a>
+            <a href="/" class = "custom-style"><div class="topnav-child">Genre</div></a>
+            <div class="topnav-child"><div class = "ld">Leaderboard</div></div>
+        </div>
+        <div class="topnav-right">
+            <div class="topnav-coins"><img src="https://media.discordapp.net/attachments/1026451939485044820/1147909636616355840/105348313-set-of-four-8-bit-pixel-art-coin-icons-color-3d-concept-of-currency-dollar-bitcoin-yen-euro-removebg-preview.png?ex=65a3f7a8&is=659182a8&hm=eecf557e57a43bd1c303af36bb0d62ce0c39daf00820000b3ad01e241ac68e3e&=&format=webp&quality=lossless" width="50" height="50"></div>
+            <span id ="coin-value">0</span>
+            <div class="topnav-profile" onclick = "loginorsignin()"><img src="https://media.discordapp.net/attachments/1026451939485044820/1147910622990843978/783eb080961fcd6.png?ex=65a3f893&is=65918393&hm=6ccf1accadf9cdf0a40d7ab99ddb672328aab362611701bd115a00374b402ffe&=&format=webp&quality=lossless&width=671&height=671" width="50" height="50"></div>
+        </div>
+    </div>
+
+    <div class = "uff-container">
+        <div class = "userfillform">
+            <form class = "fillform" action = "/userinfo" method = "POST">
+                <h class = "that">Create a new account</h>
+                <label for = "name">Username</label>
+                <input type = "text" name="username">
+                <label for = "password">Setup a password</label>
+                <input type = "password" name = "password">
+                <label for = "country">Country</label>
+                <input type = "text" name = "country">
+                <input type = "submit" value = "Submit">
+            </form>
+            <% if (messagex !== "undefined") { %>
+                <p><%= messagex %></p>
+                <% } %>
+        </div>
+    </div>
+    
+    <div class = "login-container">
+        <div class = "login">
+            <form class = "login" action = "/login" method = "POST">
+                <h class = "thatx">Sign in to your account</h>
+                <label for = "name">Username</label>
+                <input type = "text" name="username" id = "lusername">
+                <label for = "password">Enter password</label>
+                <input type = "password" name = "password" id = "lpassword">
+                <div class = "buttons">
+                    <input type = "submit" value = "Submit" onclick = "loginredirect()">
+                </div>
+            </form>
+            <button class = "signup" onclick = "dosignup()">Sign Up</button>        <!-- Button outside form otherwise it gets /login gets triggered-->
+        </div>
+        <% if (messagex !== "undefined") { %>
+            <p><%= messagex %></p>
+            <% } %>
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src = "forms.js"></script>
+<script src="script.js"></script>
+
+
+</html>
