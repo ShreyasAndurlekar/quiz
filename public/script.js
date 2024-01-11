@@ -1,5 +1,6 @@
 var coins = 0;
 var cor_ans = "hi";
+var apiUrl = 'https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple';
 
 var quiz_div = $(".quiz-container");    // Store the quiz div by using JQuery to find it in HTML
 quiz_div.css("display", "none"); 
@@ -53,8 +54,6 @@ function show_quiz(quiz_list) {
 
             cor_ans = $(buttons[i]).text();     // Store the correct answer from the created correct answer button
 
-            $(buttons[i]).css("box-shadow","0 0 10px rgba(255, 255, 255)");
-
             check = true;   // To signal that the correct answer has been set for adjusting index of inocorrect answer, you will understand reading commends below
             continue;
         }
@@ -70,41 +69,49 @@ function show_quiz(quiz_list) {
     }
 }
 
-function quiz_generate() {
-
-    $(".genre").css("display", "none");
-
-    quiz_div.css("display", "flex"); 
-
-    var apiUrl = 'https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple';
+function fetchQuizData() {
 
     fetch(apiUrl)
 
-    .then(response => response.json())
-    .then(data => {
+        .then(response => response.json())
+        .then(data => {
 
-        console.log(data.results[0]);
-        show_quiz(data.results[0]); // Please check JSON file to understand ( eg in misc folder)
+            if (data.results && data.results.length > 0) {
 
-    })
-    .catch(error => {
-        
-        console.error('Fetch Error:', error);
+                console.log(data.results[0]);
+                show_quiz(data.results[0]);
 
-    });
+            } else {
+
+                console.error('API returned empty results.');
+                setTimeout(fetchQuizData, 1000);
+                // Handle the case where the API results are empty.
+                
+            }
+        })
 }
 
-$(".q").on("click", function() {                // all buttons are under the class name "q" are sensitive to this
+function quiz_generate() {
 
-    quiz_generate();
+    $(".genre").css("display", "none");
+    quiz_div.css("display", "flex");
+    fetchQuizData();
+}
+
+
+$(".q").on("click", function() {                // all buttons are under the class name "q" are sensitive to this
 
     if ($(this).text() == cor_ans){
 
         // check to see if button clicked's text is correct or not
+        $(this).css("box-shadow","0 0 10px rgba(0, 128, 0)");
         coins = coins + 1;
         update_coins();
 
     } 
+
+    fetchQuizData();
+
 
 });
 
