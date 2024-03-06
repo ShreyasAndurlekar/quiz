@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainIt</title>
+
+    <link rel = "stylesheet" href = "styles.css">
+    
+</head>
+<body>
+
+    <div class="topnav">
+        <div class="topnav-left">
+            <a href="website.html" class = "custom-style"><div class="topnav-child">Home</div></a>
+            <a href="website.html" class = "custom-style"><div class="topnav-child">Genre</div></a>
+            <div class="topnav-child"><div class = "ld">Leaderboard</div></div>
+        </div>
+        <div class="topnav-right">
+            <div class="topnav-coins"><img src="https://pngimg.com/d/coin_PNG36871.png" width="40" height="40"></div>
+            <span id ="coin-value">0</span>
+            <div class="topnav-profile"><img src="https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png" width="80" height="50"></div>
+        </div>
+    </div>
+
+
+    <div class="genre">
+        <div class="genre-container">
+            <h1>Select a genre</h1>
+            <button id="close" onclick = "close_genre()">X</button>
+            <div class = "genre-buttons">
+                <button class="1" onclick = "quiz_generate()">General Knowledge</button>
+                
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="quiz-container">
+        <div class="quiz">
+            <div class = "question">
+                <p class="question"></p>
+            </div>
+            <div class="quiz-buttons">
+                <button class="q"></button>
+                <button class="q"></button>
+                <button class="q"></button>
+                <button class="q"></button>
+            </div>
+        </div>
+    </div>
+    
+    <div class = "table-container">
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Country</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="script.js"></script>
+
+</html>
