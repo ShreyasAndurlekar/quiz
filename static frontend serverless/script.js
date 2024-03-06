@@ -104,7 +104,6 @@ $(".q").on("click", function() {                // all buttons are under the cla
     if ($(this).text() == cor_ans){
 
         // check to see if button clicked's text is correct or not
-        $(this).css("box-shadow","0 0 10px rgba(0, 128, 0)");
         coins = coins + 1;
         update_coins();
 
