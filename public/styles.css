@@ -63,7 +63,7 @@ html, body {
 
 #coin-value {
 
-    margin-left: -20px; 
+    margin-left: -10px; 
     font-weight: bold; 
 }
 
@@ -204,23 +204,23 @@ html, body {
     justify-content: center;
     align-items: center;
     height: 50vh;
-
     font-size: x-large;
 }
 
 table {
 
     width: 1000px;
-    background-color: white;
-
+    border-collapse: separate; /* Use separate to enable border-radius */
+    border-spacing: 0; /* Remove gaps between cells */
 }
 
 td{
 
     text-align: center;
-    border: white solid 1px;
+    border: white solid 2px;
     padding: 8px;
     background-color: #404040;
+    border-radius: 20%;
 }
 
 th:first-child{
@@ -231,9 +231,10 @@ th:first-child{
 th{
 
     height: 80px;
-    border: white solid 1px;
+    border: white solid 2px;
     padding: 8px;
     background-color: #404040;
+    border-radius: 10px;
 }
 
 /*----------------------------------LOGIN FORM-------------------------------------*/

@@ -76,12 +76,9 @@ function fetchQuizData() {
         .then(response => response.json())
         .then(data => {
 
-            if (data.results && data.results.length > 0) {
-
-                console.log(data.results[0]);
+            if (data.results && data.results.length > 0) 
                 show_quiz(data.results[0]);
-
-            } else {
+            else {
 
                 console.error('API returned empty results.');
                 setTimeout(fetchQuizData, 1000);
