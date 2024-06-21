@@ -1,6 +1,7 @@
 var coins = 0;
 var cor_ans = "hi";
 var apiUrl = 'https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple';
+var userthere = "no"
 
 var quiz_div = $(".quiz-container");    // Store the quiz div by using JQuery to find it in HTML
 quiz_div.css("display", "none"); 
@@ -103,6 +104,17 @@ $(".q").on("click", function() {                // all buttons are under the cla
         // check to see if button clicked's text is correct or not
         $(this).css("box-shadow","0 0 10px rgba(0, 128, 0)");
         coins = coins + 1;
+
+        if(userthere == "yes"){
+            
+            try{
+                fetch('/updatecoins')
+            }
+            catch(error){
+                console.log(error)
+            }
+        }
+        
         update_coins();
 
     } 
@@ -125,6 +137,7 @@ $(".ld").on("click", function() {
         .then(data => { 
 
             console.log(data);
+            $("table tbody").empty();
 
             let ranker = 0;
             
@@ -154,6 +167,33 @@ function loginorsignin() {                  // WHEN CLICK ON USER PROFILE ICON T
     window.location.href = '/redirect';
     
 }
+
+function checkifsigned(){
+
+    fetch('/ac_coins') 
+
+        .then(response => response.json())
+        .then(data => { 
+
+            if(data.user == "notloggedin"){
+
+                console.log("Hi")
+            }
+            else{
+
+                coins = data.coin;
+                userthere = "yes"
+                update_coins();
+
+            }
+        })
+
+}   
+
+checkifsigned()
+
+
+
 
 
 

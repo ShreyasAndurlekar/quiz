@@ -220,7 +220,6 @@ td{
     border: white solid 2px;
     padding: 8px;
     background-color: #404040;
-    border-radius: 20%;
 }
 
 th:first-child{
@@ -234,7 +233,7 @@ th{
     border: white solid 2px;
     padding: 8px;
     background-color: #404040;
-    border-radius: 10px;
+    
 }
 
 /*----------------------------------LOGIN FORM-------------------------------------*/
