@@ -1,7 +1,8 @@
 var coins = 0;
 var cor_ans = "hi";
-var apiUrl = 'https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple';
+let apiUrl;
 var userthere = "no"
+let globaltype;
 
 var quiz_div = $(".quiz-container");    // Store the quiz div by using JQuery to find it in HTML
 quiz_div.css("display", "none"); 
@@ -15,24 +16,32 @@ function update_coins() {
 
 }
 
+function updateText(){
+
+    var ldtext =  $(".ld")
+    
+    if(window.innerWidth <= 480){
+
+        ldtext.text("Lbd")
+
+    }
+    else{
+
+        ldtext.text("Leaderboard")
+
+    }
+
+
+}
+
+window.addEventListener('resize', updateText);
+window.addEventListener('load', updateText);
+
 function decodeHTMLEntities(text) {                     // used to get rid of the unesseccary characters
 
     var textarea = document.createElement('textarea');
     textarea.innerHTML = text;
     return textarea.value;
-}
-
-function adjustsize(quiz_list) {                // Adjust size of the quiz container according to length of question
-
-    if((quiz_list.question).length <= 39)
-        $(".quiz").css("height", "340px");
-
-    if((quiz_list.question).length > 39)
-        $(".quiz").css("height", "380px");
-
-    if((quiz_list.question).length > 78)
-        $(".quiz").css("height", "420px");
-    
 }
 
 function show_quiz(quiz_list) { 
@@ -44,8 +53,6 @@ function show_quiz(quiz_list) {
     let randy = Math.floor((Math.random() * 3) + 1);        // Choose a random number between 3 and 0 ( 4 questions )
 
     ques.text(decodeHTMLEntities(quiz_list.question));      
-
-    adjustsize(quiz_list);
 
     for (var i = 0; i < buttons.length; i++) {
 
@@ -70,7 +77,13 @@ function show_quiz(quiz_list) {
     }
 }
 
-function fetchQuizData() {
+function fetchQuizData(type) {
+
+    const apiUrl = `https://opentdb.com/api.php?amount=1&category=${type}&difficulty=medium&type=multiple`;
+
+    // gk - 9
+    // vg - 15
+    // cs - 18
 
     fetch(apiUrl)
 
@@ -82,18 +95,19 @@ function fetchQuizData() {
             else {
 
                 console.error('API returned empty results.');
-                setTimeout(fetchQuizData, 1000);
+                setTimeout(fetchQuizData(type), 1000);
                 // Handle the case where the API results are empty.
                 
             }
         })
 }
 
-function quiz_generate() {
+function quiz_generate(type) {
 
+    globaltype = type
     $(".genre").css("display", "none");
     quiz_div.css("display", "flex");
-    fetchQuizData();
+    fetchQuizData(type);
 }
 
 
@@ -119,7 +133,7 @@ $(".q").on("click", function() {                // all buttons are under the cla
 
     } 
 
-    fetchQuizData();
+    fetchQuizData(globaltype);
 
 
 });

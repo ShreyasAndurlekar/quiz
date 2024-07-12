@@ -57,7 +57,16 @@ html, body {
 
 .topnav-coins{
 
-    margin-top: 6px;
+    height: 40px;
+    width: 40px;
+}
+
+.topnav-profile{
+    
+    height: 47px;
+    width: 77px;
+    margin-top: 5px;
+
 }
 
 
@@ -109,6 +118,9 @@ html, body {
 .genre-buttons {
 
     margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+
 }
 
 .genre-buttons button {
@@ -119,9 +131,10 @@ html, body {
 
     font-family: 'Bahnschrift', sans-serif;
     height: 40px;
-    width: 180px;
+    width: auto;
 
     margin-left: 20px;
+    margin-bottom: 20px;
     font-size: large;
     background-color: #404040;
     border: solid white 1px;
@@ -138,62 +151,54 @@ html, body {
 .genre-buttons button:hover {
 
         border-color: white; 
-        width: 190px;
-        height: 50px;
+        padding: 20px;
 
 }
 
 /*----------------------------------QUIZ----------------------------------*/
-
 .quiz-container {
-
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80vh; 
+    height: 80vh;
 }
 
 .question {
-
-    margin-top: 30px;
-    margin-bottom: 50px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 0px 20px 50px 20px;
 }
 
 .quiz {
-
     text-align: center;
-    font-size: xx-large; 
+    font-size: xx-large;
     background-color: #404040;
     width: 700px;
-    height: 340px;
-    
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .quiz-buttons {
-
     display: grid;
     grid-template-columns: 150px 150px;
     grid-template-rows: 50px 50px;
-    background-color: #404040;
-    height: 200px;
-    width: 500px;
     column-gap: 75px;
     row-gap: 60px;
-    justify-content: center;
-    margin-left: 90px;   
-      
-    
+    justify-items: center;
+    align-items: center;
+    background-color: #404040;
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 20px;
 }
 
-.quiz-buttons button {            
-
+.quiz-buttons button {
     font-family: 'Bahnschrift', sans-serif;
-    font-size: large; 
-    height: 85px;
-    width: 175px;
-    
+    font-size: large;
+    min-height: 85px;
+    min-width: 175px;
+    height: auto;
 }
 
 /*----------------------------------LEADERBOARD----------------------------------*/
@@ -212,6 +217,7 @@ table {
     width: 1000px;
     border-collapse: separate; /* Use separate to enable border-radius */
     border-spacing: 0; /* Remove gaps between cells */
+    padding: 20px;
 }
 
 td{
@@ -234,6 +240,14 @@ th{
     padding: 8px;
     background-color: #404040;
     
+}
+
+tr:first-child th:first-child {
+    border-top-left-radius: 15px; /* Round bottom-left corner of the top row */
+}
+
+tr:first-child th:last-child {
+    border-top-right-radius: 15px; /* Round bottom-right corner of the top row */
 }
 
 /*----------------------------------LOGIN FORM-------------------------------------*/
@@ -290,34 +304,114 @@ label, input{
 
 
 /*----------------------------------REPONSIVENESS----------------------------------*/
-
-@media (max-width: 1000px) {
-    
+@media (max-width: 768px) { /* For tablets and smaller */
     .topnav-left {
-
-        gap: 20px;
+        gap: 10px;
         margin-left: 0; 
+        
+    }
+
+    .topnav-child {
+        text-align: center; /* Center text in navigation */
+    }
+
+    .genre-container {
+        width: 70%; 
     }
 
     .quiz {
+        width: 90%;
 
-        width: 400px;
     }
 
-    .buttons {
+    .genreselect{
 
-        gap:30px;
-        width: 95%; 
+        font-size:x-large;
+    }
+
+    .table-container {
+        height: auto; /* Let table height adjust */
+    }
+
+    table {
+        width: 95%; /* Make table slightly narrower */
     }
 
 }
 
-@media (max-width: 1500px) and (min-width: 1000px) {
-    
-    .topnav-left {
-        gap: 50px;
-        margin-left: 0; 
-    
+@media (max-width: 480px) { /* For smaller phones */
+
+    .topnav-child {
+        font-size: 18px; /* Reduce font size */
     }
+
+    .topnav-coins {
+
+        height: 30px;
+        width: 30px;
+        margin-right: -5px;
+    }
+
+    #coin-value {
+
+        margin-right: -20px;
+
+    }
+
+    .topnav-profile{
+
+        height: 35px;
+        width: 60px;
+        margin-right: -20px;
+
+    }
+
+    .quiz {
+
+        font-size: medium; 
+        height: auto;
+        padding: 10px;
+
+    }
+
+    .quiz-buttons button{
+
+        font-size: medium; 
+        height: auto;
+        width: auto;
+        min-height: 50px;
+        min-width: 100px;
+
+    }
+
+    .question {
+        margin: 0px 20px 20px 20px;
+    }
+
+    .quiz-buttons {
+
+        display: grid;
+        grid-template-columns: 100px 100px;
+        grid-template-rows: 50px 50px;
+        background-color: #404040;
+        column-gap: 4px;
+        row-gap: 4px;
+        justify-content: center; 
+          
+        
+    }
+
+    .userfillform, .login{
+
+        width: 90%;
+    }
+
+    .userfillform{
+
+        display: flex;
+        justify-content: center;
+    }
+
+    /* ... other adjustments ... */
 }
 

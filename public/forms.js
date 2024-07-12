@@ -8,3 +8,4 @@ function dosignup() {                       // SIGNUP BUTTON FROM THE LOGIN FORM
     log_div.css("display","none");
     uff_div.css("display","flex");
 }
+

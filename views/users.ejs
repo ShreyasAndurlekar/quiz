@@ -19,9 +19,9 @@
             <div class="topnav-child"><div class = "ld">Leaderboard</div></div>
         </div>
         <div class="topnav-right">
-            <div class="topnav-coins"><img src="https://pngimg.com/d/coin_PNG36871.png" width="40" height="40"></div>
+            <img src="https://pngimg.com/d/coin_PNG36871.png" class="topnav-coins">
             <span id ="coin-value">0</span>
-            <div class="topnav-profile" onclick = "loginorsignin()"><img src="https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png" width="80" height="50"></div>
+            <div onclick = "loginorsignin()"><img class="topnav-profile" src="https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png"></div>
         </div>
     </div>
 
@@ -37,10 +37,10 @@
                 <input type = "text" name = "country">
                 <input type = "submit" value = "Submit">
             </form>
-            <% if (message !== "undefined") { %>
-                <p><%= message %></p>
-                <% } %>
         </div>
+        <% if (message !== "undefined") { %>
+            <p><%= message %></p>
+            <% } %>
     </div>
     
     <div class = "login-container">
