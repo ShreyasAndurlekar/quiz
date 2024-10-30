@@ -27,15 +27,11 @@ class Node{
          return;
       }
 
-      if(n < root->value){
-
+      if(n < root->value)
         insert(root->left,n);
-      
-      }
-      else {
-        
+      else   
         insert(root->right, n);
-      }
+      
        
     }
 
@@ -83,7 +79,7 @@ class Node{
           
     }
 
-    void del(Node* thenode, int n){
+    void del(Node*& thenode, int n){
 
        Node* res = search(thenode, n);
 
@@ -91,6 +87,39 @@ class Node{
           printf("\n%i found",res->value);
        else
          printf("Not found");
+      
+        // save reference of node to be deleted's children
+
+        Node* tobedel = NULL;
+
+        if(res->left != NULL && res->left->value == n)
+          tobedel = res->left;
+        if(res->right != NULL && res->right->value == n) {
+          tobedel = res->right;
+        }
+
+        // parent node can have two children tobedel cannot have two children
+        
+        if(tobedel-> left == NULL && tobedel->right == NULL){
+             
+          free(tobedel);
+          res->left = NULL;
+          tobedel = NULL;     // very important otherwise tobedel would be a dangling pointer trying to access something that's deleted.
+          return;
+
+        }
+
+        if(tobedel->left != NULL)
+          res->left = tobedel->left;
+        else 
+          res->right = tobedel->right;
+        
+      
+        // del tobedel
+         
+    
+       // RES IS PARENT NODE OF CHILD TO deleted
+       
     }
  
 };
@@ -110,7 +139,9 @@ int main(){
   }
 
   root->preorder(root);
-  root->del(root,99);
+  root->del(root,43);
+  printf("\n");
+  root->preorder(root);
  
   return 0;
    
