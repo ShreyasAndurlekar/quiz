@@ -100,6 +100,8 @@ class Node{
 
         // parent node can have two children tobedel cannot have two children
         
+        
+
         if(tobedel-> left == NULL && tobedel->right == NULL){
              
           free(tobedel);
@@ -108,7 +110,7 @@ class Node{
           return;
 
         }
-
+        
         if(tobedel->left != NULL)
           res->left = tobedel->left;
         else 
@@ -121,7 +123,48 @@ class Node{
        // RES IS PARENT NODE OF CHILD TO deleted
        
     }
- 
+
+    // so turns out my code is actually garbage and I should not rely on the parent node to delete stuff and just use recursion..
+    
+    Node* findmin(Node* root){
+
+       if(root->left)
+        return findmin(root->left);
+
+       return root;
+    }
+
+  // I guess I should avoid using void functions to utilize return that way it gives me more power while using recursion
+
+    Node* del2(Node*& root, int n){
+
+       if(root->value == n){
+
+         if(root->left && root->right){
+
+           Node* minnode = findmin(root->right);
+           int valtoreplace = minnode->value;
+           del2(root, minnode->value);
+           root->value = valtoreplace;
+           return root;
+
+         }
+         else if(root->left)
+           return root->left;
+         else if(root->right)
+           return root->right;
+
+        return NULL;
+         
+       }
+
+       if(n < root->value)
+         root->left = del2(root->left,n);
+       else 
+         root->right = del2(root->right,n);
+       
+      return root;
+    }
 };
 
 
@@ -139,7 +182,7 @@ int main(){
   }
 
   root->preorder(root);
-  root->del(root,43);
+  root->del2(root,72);
   printf("\n");
   root->preorder(root);
  
