@@ -45,7 +45,7 @@ int dfs(vector<vector<int>> graph, int r, int c){
   count += dfs(graph,r,c+1);
 
   s.erase({r,c});
-  
+   
   return count;
 
 }
